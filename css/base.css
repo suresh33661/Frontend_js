@@ -1,0 +1,190 @@
+* {
+    margin: 0;
+    padding:0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "poppins", sans-serif;
+    color: #444;
+    background-color: white;
+    height: 100vh;
+    padding: 2rem;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+
+}
+
+.welcome {
+    font-size: 1.9rem;
+    font-weight: 600;
+}
+
+.login{
+    display: flex;
+}
+
+.login_input {
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1.6rem;
+    font-family: inherit;
+    text-align: center;
+    width: 12rem;
+    border-radius: 2rem;
+    color: inherit;
+    border: 1px solid #444;
+    transition: all 0.3s;
+}
+
+.login_input:focus {
+    outline: none ;
+    border-color: 1px solid white;
+}
+
+.login_input::placeholder {
+    color: brown
+}
+
+.login_btn {
+    border : none;
+    padding: 0.5rem 1rem;
+    background: none;
+    cursor: pointer;
+    font-size: 1.6rem;
+    transition: all 0.3s;
+}
+
+.login_btn:hover,
+.login_btn:focus,
+
+
+
+
+.app {
+    position: relative;
+    max-width: 100rem;
+    margin: 4rem auto;
+    display: grid;
+    grid-template-columns: 4fr 3fr;
+    grid-template-rows: auto repeat(3,15rem) auto;
+    gap: 2rem;
+    opacity: ;
+    transition: all 0.3s;
+
+}
+
+.balance {
+    grid-column: 1 / span 2;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: -0.2rem;
+}
+
+.balance_label {
+    font-size: 2.2rem;
+    font-weight: 500;
+    margin-bottom: -0.5rem;
+}
+
+.balance_date {
+    font-size: 1.4rem;
+    color: #888;
+} 
+
+.balance_value {
+    font-size: 4.5rem;
+    font-weight: 400;;
+}
+
+.movements {
+    grid-row: 2 / span 4;
+    background-color: white;
+    border-radius: 1rem;
+    overflow: scroll;
+
+}
+
+.movements_row {
+    padding: 2.25rem;
+    display : flex;
+    justify-content: space-between;
+    border-bottom : 1px solid #eee; 
+}
+
+.movements_type {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    color:#fff;
+    padding: 0.1rem 1rem;
+    border-radius: 10rem;
+    margin-right: 2rem;
+    
+}
+.movements_date {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    color : #666;
+    
+}
+
+.movements_type--deposit {
+    background-image: linear-gradient(to top left, #39b385, #9be151);
+}
+
+.movements_type--withdrawal {
+    background-image: linear-gradient(
+        to top left, #ff5852, #ff5381
+    );
+}
+
+.summary {
+    grid-row : 5/6;
+    display: flex;
+    align-items: baseline;
+    padding: 0 0.3rem;
+    margin-top: 1rem;
+}
+
+.summary_label{
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-right: 0.9rem;
+
+}
+
+.summary_vale {
+    font-size: 2.2rem;
+    margin-right: 2.5rem;
+}
+
+.summary_value {
+    color : #f5465b;
+}
+
+.btn_sort {
+    
+}
+
+
+
+
+
+
+
+
+

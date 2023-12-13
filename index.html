@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bankist</title>
+    <link rel="stylesheet" href="/Banklist/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <p class="welcome">Log in to get started</p>
+        <img src="/Login_/images/user-interface.png" alt="User Interface" class="user-interface" width="50" height="50">
+        <form class="login">
+            <input
+                type="text"
+                placeholder="User name"
+                class="login_input login_input--user"/>
+            <input
+                type="password"
+                placeholder="Enter password"
+                maxlength="4"
+                class="login_input login_input--pin"/>
+                <button class="login_btn">&rarr;</button>
+        </form>
+        <h1 class="valid_credentials">Please Enter valid Credentials</h1>
+    </nav>
+    <main class="app">
+        <div class="summary">
+            <div class="summary_row">
+                <div class="summary_label">In</div>
+                <div class="summary_value summary_value--in">0000$</div>
+            </div>
+            <div class="summary_row">
+                <div class="summary_label">Out</div>
+                <div class="summary_value summary_value--out">-0000$</div>
+            </div>
+            <div class="summary_row">
+                <div class="summary_label">Interest</div>
+                <div class="summary_value summary_value--interest">0000$</div>
+            </div>
+            <button class="sort_btn sort_btn--in">&uarr;</button>
+        </div>
+        <!-- Balance -->
+        <div class="balance">
+            <div class="line">
+                <p class="balance_label">current balance</p>
+                <p class="balance_date">As of <span class="date">05/03/2023</span></p>
+            </div>
+            <p class="balance_value"><span class="balance_value_span">0000$</span></p>
+            
+        </div>
+        <!-- Movements -->
+        <div class="movements">
+            <div class="movements_row">
+                <div class="movements_type movements_type--deposit">Deposit</div>
+                <div class="movements_date">3 days ago</div>
+                <div class="movements_value">0000$</div>
+            </div>
+            <div class="movements_row">
+                <div class="movements_type movements_type--withdrawal">Withdrawal</div>
+                <div class="movements_date">24/02/2023</div>
+                <div class="movements_value">-0000$</div>
+            </div>
+        </div>
+    
+        <div class="operation">
+            <!-- Money transfer -->
+
+            <div class="money-transfer">
+                <h2 class="money-transfer_heading">Transfer money</h2>
+
+                <div class="money-transfer_input--from">
+                    <input
+                        type="text"
+                        placeholder="Transfer to"
+                        class="money-transfer_input money-transfer_input--to"/>
+                    <p>To</p>
+                    <input
+                        type="number"
+                        placeholder="Amount"
+                        class="money-transfer_input money-transfer_input--amount"/>
+                    <button class="money-transfer_btn">&rarr;</button>
+                </div>
+            </div>
+
+            <!-- Loan -->
+            <div class="loan">
+                <h2 class="loan_heading">Request loan</h2>
+                <input
+                    type="number"
+                    placeholder="Amount"
+                    class="loan_input loan_input--amount"/>
+                <button class="loan_btn">&rarr;</button>
+            </div>
+            
+
+            <!-- Close account -->
+            <div class="close-account">
+                <h2 class="close-account_heading">Close account</h2>
+                <input
+                    type="text"
+                    placeholder="User name"
+                    class="close-account_input close-account_input--user"/>
+                <input
+                    type="password"
+                    placeholder="Enter password"
+                    maxlength="4"
+                    class="close-account_input close-account_input--pin"/>
+                <button class="close-account_btn">&rarr;</button>
+            </div>
+        </div>
+    
+
+    <!-- Summary -->
+    
+    </main>
+        
+    
+    <script src="/Banklist/js/index.js"></script>
+</body>
+</html>
