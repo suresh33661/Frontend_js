@@ -47,6 +47,7 @@ const btnLogin = document.querySelector('.login_btn');
 const btnTransfer = document.querySelector('.money-transfer_btn');
 const btnLoan = document.querySelector('.loan_btn');
 const btnClose = document.querySelector('.close-account_btn');
+const btnSort = document.querySelector('.sort_btn');
 
 const inputLoginUsername = document.querySelector('.login_input--user');
 const inputLoginPin = document.querySelector('.login_input--pin');
@@ -201,4 +202,42 @@ btnTransfer.addEventListener('click',function(event){
    }
 });
 
+// * Loan //
+btnLoan.addEventListener('click',function(event){
+    event.preventDefault();
+    const loan_amount = Number(inputLoanAmount.value);
+    if (loan_amount > 0 && currentAccount.movements.some(mov => mov >= loan_amount * 0.1)){
+        currentAccount.movements.push(loan_amount);
+        displayMovements(currentAccount.movements)
+        calPrintBalance(currentAccount)
+        calDisplaySummary(currentAccount.movements)
+        calDisplaySummaryOut(currentAccount.movements)
+        inputLoanAmount.value = '';
+    }
+})
 
+
+btnClose.addEventListener('click',function(event){
+    event.preventDefault();
+
+    if(inputCloseUsername.value === currentAccount.user && Number(inputClosePin.value) === currentAccount.pin){
+        const index = accounts.findIndex(acc => acc.user === currentAccount.user);
+        console.log(index)
+        console.log(accounts.splice(index,1));
+        containerApp.style.opacity = 0;
+        inputCloseUsername.value = inputClosePin.value = '';
+
+        
+    }
+});
+
+
+btnSort.addEventListener('click',function(event){
+    event.preventDefault();
+    displayMovements(currentAccount.movements.sort((a,b) => a - b))
+})
+
+btnSort.addEventListener('dblclick',function(event){
+    event.preventDefault();
+    displayMovements(currentAccount.movements.sort((a,b) => b - a))
+})
