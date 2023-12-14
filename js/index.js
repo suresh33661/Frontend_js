@@ -5,6 +5,18 @@ const account1 = {
     movements: [200, 450, -400, 3000, -650, -130, 70, 1300,900,-200],
     interestRate: 1.2,
     pin: 1111,
+    movementsDates: ['2019-11-01T13:15:33.035Z',
+    '2019-11-30T09:48:16.867Z',
+    '2019-12-25T06:04:23.907Z',
+    '2020-01-25T14:18:46.235Z',
+    '2020-02-05T16:33:06.386Z',
+    '2020-04-10T14:43:26.374Z',
+    '2020-06-25T18:49:59.371Z',
+    '2020-07-26T12:01:20.894Z',
+    '2020-08-01T10:51:36.790Z'],
+    currency: 'EUR',
+    locale: 'pt-PT',
+
 };
 
 const account2 = {
@@ -12,21 +24,57 @@ const account2 = {
     movements: [5000, 3400, -150, 3210, -1000, 8500, -30],
     interestRate: 1.5,
     pin: 2222,
-}
+    movementsDates: ['2019-11-01T13:15:33.035Z',
+    '2019-11-30T09:48:16.867Z',
+    '2019-12-25T06:04:23.907Z',
+    '2020-01-25T14:18:46.235Z',
+    '2020-02-05T16:33:06.386Z',
+    '2020-04-10T14:43:26.374Z',
+    '2020-06-25T18:49:59.371Z',
+    '2020-07-26T12:01:20.894Z',
+    '2020-08-01T10:51:36.790Z'],
+    currency: 'USD',
+    locale: 'en-US',
+
+};
 
 const account3 = {
     owner: "Steve Thomas Williams",
     movements: [200, -200, 350, -200, -20, 50, 400, -460],
     interestRate: 0.7,
     pin: 3333,
-}
+    movementsDates: ['2019-11-01T13:15:33.035Z',
+    '2019-11-30T09:48:16.867Z',
+    '2019-12-25T06:04:23.907Z',
+    '2020-01-25T14:18:46.235Z',
+    '2020-02-05T16:33:06.386Z',
+    '2020-04-10T14:43:26.374Z',
+    '2020-06-25T18:49:59.371Z',
+    '2020-07-26T12:01:20.894Z',
+    '2020-08-01T10:51:36.790Z'],
+    currency: 'EUR',
+    locale: 'pt-PT',
+
+};
 
 const account4 = {
     owner: "Sarah Smith",
     movements: [430, 1000, 200, 98],
     interestRate: 1,
     pin: 4444,
-}
+    movementsDates: ['2019-11-01T13:15:33.035Z',
+    '2019-11-30T09:48:16.867Z',
+    '2019-12-25T06:04:23.907Z',
+    '2020-01-25T14:18:46.235Z',
+    '2020-02-05T16:33:06.386Z',
+    '2020-04-10T14:43:26.374Z',
+    '2020-06-25T18:49:59.371Z',
+    '2020-07-26T12:01:20.894Z',
+    '2020-08-01T10:51:36.790Z'],
+    currency: 'USD',
+    locale: 'en-US',
+
+};
 
 
 const accounts = [account1, account2, account3, account4]
@@ -64,13 +112,22 @@ const movementsValue1 = document.querySelector('.movements_value1_span');
 const movementsValue2 = document.querySelector('.movements_value2_span');
 
 
-const displayMovements = function (movements) {
+const displayMovements = function (acc) {
     containerMovements.innerHTML = '';
-    movements.forEach(function (mov, i) {
+    acc.movements.forEach(function (mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
+    const date = new Date(acc.movementsDates[i]);
+    const day = `${date.getDate()}`.padStart(2,0);
+    const month = `${date.getMonth() + 1}`.padStart(2,0);
+    const year = date.getFullYear();
+    const hour = date.getHours();
+    const min = date.getMinutes();
+    const displayDate = `${day}/${month}/${year} , ${hour}:${min}`
+
     const html = `
     <div class="movements_row">
         <div class="movements_type movements_type--${type}">${i+1} ${type}</div>
+        <div class="movements_date">${displayDate}</div>
         <div class="movements_value ">${mov}€</div>`
 
         containerMovements.insertAdjacentHTML('afterbegin', html);
@@ -139,7 +196,17 @@ calDisplaySummaryOut(movements)
 
 let currentAccount;
 
+// Fake Always Logged in
 
+
+// Date
+const now = new Date();
+const day = `${now.getDate()}`.padStart(2,0);
+const month = `${now.getMonth() + 1}`.padStart(2,0);
+const year = now.getFullYear();
+const hour = now.getHours();
+const min = now.getMinutes();
+labeDate.textContent = `${day}/${month}/${year} , ${hour}:${min}`
 
 btnLogin.addEventListener('click',function(event){
    event.preventDefault();
@@ -157,7 +224,7 @@ if(currentAccount?.pin === Number(inputLoginPin.value)){
 
 
     // Display Movements
-    displayMovements(currentAccount.movements)
+    displayMovements(currentAccount)
 
     // Display Balance
     calPrintBalance(currentAccount)
@@ -194,7 +261,7 @@ btnTransfer.addEventListener('click',function(event){
    if (amount > 0 && receiverAcc &&  currentAccount.balance >= amount && receiverAcc.user !== currentAccount.user && receiverAcc){
        currentAccount.movements.push(-amount);
        receiverAcc.movements.push(amount);
-       displayMovements(currentAccount.movements)
+       displayMovements(currentAccount)
        calPrintBalance(currentAccount)
        calDisplaySummary(currentAccount.movements)
        calDisplaySummaryOut(currentAccount.movements)
@@ -208,7 +275,7 @@ btnLoan.addEventListener('click',function(event){
     const loan_amount = Number(inputLoanAmount.value);
     if (loan_amount > 0 && currentAccount.movements.some(mov => mov >= loan_amount * 0.1)){
         currentAccount.movements.push(loan_amount);
-        displayMovements(currentAccount.movements)
+        displayMovements(currentAccount)
         calPrintBalance(currentAccount)
         calDisplaySummary(currentAccount.movements)
         calDisplaySummaryOut(currentAccount.movements)
@@ -237,7 +304,6 @@ btnSort.addEventListener('click',function(event){
     displayMovements(currentAccount.movements.sort((a,b) => a - b))
 })
 
-btnSort.addEventListener('dblclick',function(event){
-    event.preventDefault();
-    displayMovements(currentAccount.movements.sort((a,b) => b - a))
-})
+
+
+
