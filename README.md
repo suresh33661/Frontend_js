@@ -2,6 +2,9 @@
 
 Bankist is a simple web application for managing your banking activities. The application provides features such as logging in, viewing account summary, performing money transfers, requesting loans, and closing accounts.
 
+## ScreenShots
+
+
 ## Table of Contents
 
 - [Overview](#overview)
