@@ -25,7 +25,7 @@ Bankist is a simple web application for managing your banking activities. The ap
 ## Overview <a name="overview"></a>
 
 This web application is designed to simulate basic banking functionalities. Users can log in, view their account summary, perform money transfers, request loans, and close their accounts. The interface is user-friendly and responsive.
-- User Id and Passowrd are in Index.js for reference of the App.
+- User Id and Password are in Index.js for reference of the App.
 - User can use those available information to work on it.
 - This is only for learning process.
 
