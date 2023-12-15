@@ -77,8 +77,16 @@ To run the application locally, follow these steps:
 
    ```bash
    git clone https://github.com/your-username/bankist-web-app.git
-   
 
+2. Create a New Branch:
+   
+   ```bash
+   git checkout -b <new branch>
+   
+3. Create a remote repo:
+   
+   ```bash
+   git remote new origin <git clone https://github.com/your-username/bankist-web-app.git>
 
 ## Contributing <a name="contributing"></a>
    Contributions are welcome! If you find any issues or have ideas for improvement, feel free to open an issue or create a pull request.
